@@ -1,0 +1,57 @@
+PSGI adapter for CGI::Application::Dispatch
+
+CGI::Application::Dispatch is a (not so) simple dispatcher for families
+of CGI::Application-based applications served under common URL base.
+
+It is a little too high-level to be directly converted to PSGI with
+CGI::Application::PSGI so the need for a special adapter rose. Here it
+is.
+
+	### in your dispatch.psgi:
+	use Your::Application::Dispatch;
+	use CGI::Application::Dispatch::PSGI;
+
+	Your::Application::Dispatch->as_psgi;
+
+Most of CGI::Application::Dispatch scripts may be converted by simply
+changing "dispatch()" method call to "as_psgi()" call.
+
+The code is a mere mashup of CGI::Application::PSGI and
+CGI::Application::Emulate::PSGI, so all the good parts here are courtesy
+of their respective authors but the bugs are all mine.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc CGI::Application::Dispatch::PSGI
+
+You can also look for information at:
+
+    RT, CPAN's request tracker
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=CGI-Application-Dispatch-PSGI
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/CGI-Application-Dispatch-PSGI
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/CGI-Application-Dispatch-PSGI
+
+    Search CPAN
+        http://search.cpan.org/dist/CGI-Application-Dispatch-PSGI
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2009 Alex Kapranoff
+
+This program is released under the following license: GPLv3
