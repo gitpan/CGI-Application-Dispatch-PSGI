@@ -8,7 +8,7 @@ CGI::Application::Dispatch::PSGI - PSGI adapter for CGI::Application::Dispatch
 
 =cut
 
-our $VERSION = '0.1';
+our $VERSION = '0.2';
 
 use CGI::Application::Dispatch ();
 use CGI::PSGI;
@@ -49,7 +49,7 @@ available to your custom dispatcher class through inheritance.
 This is a constructor for PSGI application sub. It must be called as a
 method and takes an optional hash with arguments for dispatcher. For
 additional information about the arguments, see
-L<CGI::Application::Dispatcher/dispatch(%args)>.
+L<CGI::Application::Dispatch/dispatch(%args)>.
 
 Example:
 
@@ -75,7 +75,7 @@ sub as_psgi {
             local *STDIN  = $env->{'psgi.input'};
             local *STDERR = $env->{'psgi.errors'};
 
-            $args{args_to_new}->{QUERY} = CGI::PSGI->new(shift);
+            $args{args_to_new}->{QUERY} = CGI::PSGI->new($env);
             local $ENV{PATH_INFO} = $env->{PATH_INFO};
             $self->dispatch(%args);
         };

@@ -1,5 +1,8 @@
 Revision history for CGI-Application-Dispatch-PSGI
 
+0.2		Tue Feb 16 16:26:18 MSK 2010
+		Bugfix. CGI::PSGI was initialized with an empty env.
+
 0.1		Tue Dec 22 18:05:50 MSK 2009
         First version, released on an unsuspecting world.
 		Implements a very simple "drop-in" interface. Was never tested
